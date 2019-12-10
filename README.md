@@ -1,3 +1,8 @@
+### 安装
+```php
+composer require tiderjian/qs-excel
+```
+
 ### 介绍
 Excel文件生成及Excel文件读取
 

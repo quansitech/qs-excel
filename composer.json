@@ -1,0 +1,22 @@
+{
+  "name": "tiderjian/qs-excel",
+  "description": "qs excel helper",
+  "type": "library",
+  "keywords": ["excel", "PhpSpreadsheet"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "tiderjian",
+      "email": "tider_yatsen@hotmail.com"
+    }
+  ],
+  "require": {
+      "php": ">=7.2.0",
+    "phpoffice/phpspreadsheet": "^1.10"
+  },
+  "autoload": {
+    "psr-4": {
+      "QsExcel\\": "src/"
+    }
+  }
+}

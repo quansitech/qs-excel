@@ -145,6 +145,41 @@ $excel->output('reader_import.xlsx');
 
 ```
 
+##### Cell Type
+
+ListTypeBuilder 将单元格设置成下拉列表,支持三种设置数据源的方式
+
+> 1. 短字符串
+>> 短字符串的含义是小于565个字符，此时短字符串会直接设置为列表数据源，不会有额外的表格内容占用, 内容用","分隔。
+```php
+[
+    'title' => '性别',
+    'type' => 'list',
+    'data_source' => '男,女'
+]
+```
+
+> 2. 长字符串
+>> 长字符串是相对于短字符串而言的，也就是大于565个字符，此时qs-excel会自动生成一个名字为ListSource的sheet用于存放数据源
+```php
+$arr = []; //大数组
+[
+    'title' => '性别',
+    'type' => 'list',
+    'data_source' => implode(',', $arr)
+]
+```
+
+> 3. 指定引用源
+>> qs-excel 支持以 "sheet!$A$1:$A$20" 这种格式的方式设置任意表格的引用数据源
+```php
+[
+    'title' => '团队名',
+    'type' => 'list',
+    'data_source' => '团队信息!$B$2:$B$500'   // 团队信息为其他sheet的sheet名，前后两个列字母的必须一致，这个例子就是B
+]
+```
+
 ####  ListLoader
 ```php
 $file = __DIR__ . '/excel.xls';  

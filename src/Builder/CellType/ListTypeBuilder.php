@@ -9,7 +9,10 @@ class ListTypeBuilder extends TypeBuilderContract
     private $_str_option_maxlimit = 565;
 
     public function build(array $header_option){
-        if(strlen($header_option['data_source']) > $this->_str_option_maxlimit){
+        if( preg_match('#.+?!\$([A-Z]+)\$\d+:\$\1\$\d+#', $header_option['data_source'], $match) ){
+            $formula = $header_option['data_source'];
+        }
+        else if (strlen($header_option['data_source']) > $this->_str_option_maxlimit){
             $formula = TypeListSource::getInstance()->addTypeList(explode(',', $header_option['data_source']));
         }
         else{

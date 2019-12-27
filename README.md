@@ -147,16 +147,16 @@ $excel->output('reader_import.xlsx');
 
 ##### Cell Type
 
-ListTypeBuilder 将单元格设置成下拉列表,支持三种设置数据源的方式
++ ListTypeBuilder 将单元格设置成下拉列表,支持三种设置数据源的方式
 
 > 1. 短字符串
 >> 短字符串的含义是小于565个字符，此时短字符串会直接设置为列表数据源，不会有额外的表格内容占用, 内容用","分隔。
 ```php
 [
     'title' => '性别',
-    'type' => 'list',
+    'type' => QsExcel\Builder\ListBuilder::LIST_TYPE,
     'data_source' => '男,女'
-]
+];
 ```
 
 > 2. 长字符串
@@ -165,9 +165,9 @@ ListTypeBuilder 将单元格设置成下拉列表,支持三种设置数据源的
 $arr = []; //大数组
 [
     'title' => '性别',
-    'type' => 'list',
+    'type' => QsExcel\Builder\ListBuilder::LIST_TYPE,
     'data_source' => implode(',', $arr)
-]
+];
 ```
 
 > 3. 指定引用源
@@ -175,9 +175,17 @@ $arr = []; //大数组
 ```php
 [
     'title' => '团队名',
-    'type' => 'list',
+    'type' => QsExcel\Builder\ListBuilder::LIST_TYPE,
     'data_source' => '团队信息!$B$2:$B$500'   // 团队信息为其他sheet的sheet名，前后两个列字母的必须一致，这个例子就是B
-]
+];
+```
+
++ DateTypeBuilder 将单元格设置成日期格式
+```php
+[
+    'title' => '出生日期',
+    'type' => QsExcel\Builder\ListBuilder::DATE_TYPE
+];
 ```
 
 ####  ListLoader

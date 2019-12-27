@@ -1,12 +1,17 @@
 <?php
 namespace QsExcel\Builder;
 
+use QsExcel\Builder\CellType\DateTypeBuilder;
 use QsExcel\Builder\CellType\ListTypeBuilder;
 
 class ListBuilder extends BuilderContract {
-    
+
+    const LIST_TYPE = 'list';
+    const DATE_TYPE = 'date';
+
     protected $type_map = [
-        'list' => ListTypeBuilder::class
+        self::LIST_TYPE => ListTypeBuilder::class,
+        self::DATE_TYPE => DateTypeBuilder::class
     ];
 
     public function __construct(array $options, array $data = [])

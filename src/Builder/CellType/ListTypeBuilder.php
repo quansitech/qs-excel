@@ -21,7 +21,7 @@ class ListTypeBuilder extends TypeBuilderContract
 
         $objValidation = $this->cell->getDataValidation();
         $objValidation->setType(DataValidation::TYPE_LIST)
-            ->setAllowBlank(false)
+            ->setAllowBlank(true)
             ->setShowDropDown(true)
             ->setShowInputMessage(true)
             ->setShowErrorMessage(true)

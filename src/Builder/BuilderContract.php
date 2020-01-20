@@ -18,12 +18,12 @@ abstract class BuilderContract
     }
 
     public function getSheetName(){
-        return $this->sheet_name;
+        return $this->sheet_name ? $this->sheet_name : 'sheet' . ($this->spread_sheet->getSheetCount());
     }
 
     protected function buildData(){
         if(array_filter($this->data)){
-            $this->spread_sheet->getActiveSheet()->fromArray($this->data, null, 'A2');
+            $this->spread_sheet->getSheet(0)->fromArray($this->data, null, 'A2');
         }
 
     }

@@ -188,6 +188,18 @@ $arr = []; //大数组
 ];
 ```
 
++ MultiListTypeBuilder 多选类型
+
+    该类型不会对数据进行准确性校验，只会在ListSource sheet增加可选的值
+```php
+$arr = [ '标签1', '标签2', ...];
+[
+    'title' => '标签',
+    'type' => QsExcel\Builder\ListBuilder::MULTI_LIST_TYPE,
+    'data_source' => implode(',', $arr)
+];
+```
+
 ####  ListLoader
 ```php
 $file = __DIR__ . '/excel.xls';  

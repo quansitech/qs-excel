@@ -58,9 +58,7 @@ class Excel{
             $builder->build();
         }
 
-        // 判断IE/edge浏览器，对文件名进行处理
-        $user_agent = $_SERVER['HTTP_USER_AGENT'];
-        if (preg_match("/MSIE|Trident|Edge/", $user_agent))  $file_name = urlencode($file_name);
+        $file_name = urlencode($file_name);
 
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
         header('Content-Disposition: attachment;filename="' . $file_name . '"');

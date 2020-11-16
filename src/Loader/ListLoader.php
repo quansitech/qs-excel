@@ -18,11 +18,13 @@ class ListLoader extends LoaderContract
 
             $tmp = [];
             $break_flag = false;
+            $n = 0;
             foreach($cellIterator as $cell){
-                if(trim($cell->getValue()) == ''){
+                if($n == 0 && trim($cell->getValue()) == ''){
                     $break_flag = true;
                     break;
                 }
+                $n++;
                 $tmp[$cell->getColumn()] = trim($cell->getValue());
             }
 

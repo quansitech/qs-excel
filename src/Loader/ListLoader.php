@@ -17,18 +17,11 @@ class ListLoader extends LoaderContract
             $cellIterator->setIterateOnlyExistingCells(false);
 
             $tmp = [];
-            $break_flag = false;
-            $n = 0;
             foreach($cellIterator as $cell){
-                if($n == 0 && trim($cell->getValue()) == ''){
-                    $break_flag = true;
-                    break;
-                }
-                $n++;
                 $tmp[$cell->getColumn()] = trim($cell->getValue());
             }
 
-            if($break_flag){
+            if(empty($tmp)){
                 break;
             }
 

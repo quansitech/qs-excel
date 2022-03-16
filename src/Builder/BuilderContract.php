@@ -22,7 +22,7 @@ abstract class BuilderContract
     }
 
     protected function buildData(){
-        if($this->data && array_filter($this->data)){
+        if(is_array($this->data) && array_filter($this->data)){
             $this->spread_sheet->getSheet(0)->fromArray($this->data, null, 'A2');
         }
 

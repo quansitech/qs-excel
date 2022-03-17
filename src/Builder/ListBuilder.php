@@ -11,6 +11,8 @@ class ListBuilder extends BuilderContract {
     const DATE_TYPE = 'date';
     const MULTI_LIST_TYPE = 'multi_list';
 
+    protected $data;
+
     protected $type_map = [
         self::LIST_TYPE => ListTypeBuilder::class,
         self::DATE_TYPE => DateTypeBuilder::class,
@@ -20,9 +22,7 @@ class ListBuilder extends BuilderContract {
     public function __construct(array $options, array $data = [])
     {
         $this->setOptions($options);
-        if(array_filter($data)){
-            $this->setData($data);
-        }
+        $this->setData($data);
     }
 
     public function setOptions($options){
@@ -31,6 +31,12 @@ class ListBuilder extends BuilderContract {
 
     public function setData(array $data){
         $this->data = $data;
+    }
+
+    protected function buildData(){
+        if(is_array($this->data) && array_filter($this->data)){
+            $this->spread_sheet->getSheet(0)->fromArray($this->data, null, 'A2');
+        }
     }
 
     public function build(){

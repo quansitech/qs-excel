@@ -21,12 +21,5 @@ abstract class BuilderContract
         return $this->sheet_name ? $this->sheet_name : 'sheet' . ($this->spread_sheet->getSheetCount());
     }
 
-    protected function buildData(){
-        if(is_array($this->data) && array_filter($this->data)){
-            $this->spread_sheet->getSheet(0)->fromArray($this->data, null, 'A2');
-        }
-
-    }
-
     abstract  function build();
 }
